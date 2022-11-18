@@ -18,11 +18,12 @@ require_relative './classes/booking'
 require_relative './methods/headers'
 
 # Create a hotel and rooms
-hotel = Hotel.new.add_room(Deluxe.new).add_room(Luxury.new).add_room(Grey.new)
+hotel = Manage_Hotel.new.add_room(Deluxe.new).add_room(Luxury.new).add_room(Grey.new)
+hotel_in = Hotel_Info.new
 
 # Welcome message
 clear
-welcome(hotel)
+welcome(hotel_in)
 
 # Enter Cat guest details
 puts "\n    Hello Human! \n\n"
@@ -60,7 +61,7 @@ puts "\n\n Meow #{cat.name}!"
 while true
     
     # Display hotel menu options using TTY-Prompt gem
-    welcome(hotel)
+    welcome(hotel_in)
     selection = TTY::Prompt.new.select("How may we assist you today? Please select from the following options:",  cycle: true, marker: '>', echo: false) do |menu|
         menu.choice('Make a new booking', 1)
         menu.choice('View an existing booking', 2)
@@ -76,7 +77,7 @@ while true
             # A booking has already been created
             if cat.booking
                 clear
-                welcome(hotel)
+                welcome(hotel_in)
                 puts "\n\n\n You already have a booking! \n\n\n"
 
             # If there is no booking, creates a booking
@@ -109,7 +110,7 @@ while true
                 # Displays the booking for user including price
                 clear
                 puts "Thank you for your booking!"
-                cat.booking.display_booking(cat, hotel)
+                cat.booking.display_booking(cat, hotel_in)
                 back_main_menu
             end
 
@@ -119,12 +120,12 @@ while true
             if cat.booking
                 # View an existing booking
                 clear
-                cat.booking.display_booking(cat, hotel)
+                cat.booking.display_booking(cat, hotel_in)
                 back_main_menu
             else
                 # Or, if there is no booking, displays an error message
                 clear
-                welcome(hotel)
+                welcome(hotel_in)
                 puts "\n\n  Ooops, sorry, you don't have a booking yet! \n\n\n"
             end
 
@@ -144,7 +145,7 @@ while true
         # View about the hotel and contact information
         when 4
             clear
-            hotel.hotel_info
+            hotel.hotel_info #
             back_main_menu
 
         # Quit

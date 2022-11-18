@@ -1,4 +1,5 @@
-require 'tty-prompt'
+#require 'tty-prompt'
+require_relative './prompt.rb'
 
 # The Room class holds the features, price and availability of each room type. Room types are defined as sub classes. 
 # This class' methods relate displaying various room information, and changing the room's availability, for instance. 
@@ -61,7 +62,7 @@ class Room
 
     # user selects the days they would like for their booking, based on the room's availability
     def select_days_selection(days_selected, days_menu)
-        TTY::Prompt.new.multi_select("Please select your days to book in:", days_menu, cycle: true, marker: '>', echo: false, per_page: 7).each do |day|
+        Prompt.instance.multi_select("Please select your days to book in:", days_menu, cycle: true, marker: '>', echo: false, per_page: 7).each do |day|
             @availability[day.to_sym] = "Booked Out"                        # the string is converted back to a symbol, and availability is changed
             days_selected.push(day)
         end
