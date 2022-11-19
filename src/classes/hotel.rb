@@ -1,4 +1,3 @@
-#equire 'tty-prompt'
 require_relative './prompt.rb'
 require_relative '../methods/headers'
 
@@ -38,23 +37,6 @@ class Hotel_Info
         puts " Email: #{@email}"
     end
 
-    # adds a room to the hotel - pushes the room to the rooms array
-    # def add_room(room)
-    #     @rooms << room
-    #     return self
-    # end
-
-    # # menu to choose a room in the hotel
-    # def select_room
-
-    #     # These two lines create an array for the menu to display the room names
-    #     menu = []
-    #     @rooms.each { |room| menu.push(room.type)} 
-
-    #     # this displays the menu using the TTY-Prompt gem. It returns the selected room
-    #     selection = Prompt.instance.select("Choose a room type:", menu, cycle: true, marker: '>', echo: false)
-    #         @rooms.each { |room| return room if room.type == selection }
-    # end
 end
 
 class Manage_Hotel

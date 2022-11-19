@@ -1,4 +1,3 @@
-#require 'tty-prompt'
 require_relative './prompt.rb'
 
 # The Room class holds the features, price and availability of each room type. Room types are defined as sub classes. 
